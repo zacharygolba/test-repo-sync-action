@@ -19,3 +19,4 @@ jobs:
           pr_title: 'deploy(web): sync changes from main to prod'
           source_branch: 'main'
           destination_branch: 'prod'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
