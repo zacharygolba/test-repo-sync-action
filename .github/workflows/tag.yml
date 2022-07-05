@@ -1,0 +1,21 @@
+name: Tag
+on:
+  push:
+    tags:
+      - v**
+jobs:
+  deploy:
+    name: Deploy production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Create pull request
+        uses: repo-sync/pull-request@v2.6.2
+        with:
+          pr_body: ':shipit:'
+          pr_draft: false
+          pr_title: 'deploy(web): sync changes from main to prod'
+          source_branch: 'main'
+          destination_branch: 'prod'
